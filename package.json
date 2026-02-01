@@ -1,0 +1,29 @@
+{
+  "name": "todo-app-backend-exercise",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+  "start": "node dist/index.js",
+  "dev": "ts-node src/index.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "module",
+    "url": "git+https://github.com/icyaiste/ToDo-app-backend-exercise.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module", 
+  "bugs": {
+    "url": "https://github.com/icyaiste/ToDo-app-backend-exercise/issues"
+  },
+  "homepage": "https://github.com/icyaiste/ToDo-app-backend-exercise#readme",
+  "devDependencies": {
+    "@types/node": "^25.2.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3"
+  }
+}
