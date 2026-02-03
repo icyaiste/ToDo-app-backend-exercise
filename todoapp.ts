@@ -1,9 +1,10 @@
-import * as readline from "node:readline";
+import readline from "node:readline";
 
 // Define Todo type
 type Todo = {
   id: number;
   text: string;
+  category: string;
 }
 
 // Store todos in memory (array)
@@ -20,40 +21,54 @@ const addTodo = (): void => {
   rl.question("Enter task: ", (text: string) => {
     if (text.trim() === "") {
       console.log("Task cannot be empty!\n");
-    } else {
-      const newTodo: Todo = {
-        id: Date.now(),
-        text: text.trim(),
-      };
-
-      todos.push(newTodo);
-      console.log("✓ Task added successfully!\n");
+      showMenu();
+      return;
     }
+      rl.question("Enter category: ", (category: string) => {
+        const newTodo: Todo = {
+          id: Date.now(),
+          text: text.trim(),
+          category: category.trim() === "" ? "general" : category.trim(),
+        };
+       
+       todos.push(newTodo);
+      console.log("✓ Task added successfully!\n");
     showMenu();
   });
-};
+});
+}
 
 // List all todos
 const listTodos = (): void => {
   console.clear();
   console.log("\n=== Todo List App ===");
   console.log("Commands: add, list, remove, exit\n");
+  console.log(`You have ${todos.length} todos`);
+
 
   if (todos.length === 0) {
     console.log("No todos yet!\n");
   } else {
-    console.log("Your Todos:");
+    console.log("Your Todos:")
     todos.forEach((todo: Todo) => {
-      console.log(`${todo.id}. ${todo.text}`);
+    console.log(`${todo.id}. ${todo.text} [${todo.category}]`);
     });
     console.log("");
   }
 
-  process.stdout.write("> ");
+  /*process.stdout.write("> ");
   rl.question("", (command: string) => {
     handleCommand(command);
-  });
+  });*/
+  rl.question("\nPress Enter to return to menu...", () => {
+  showMenu();
+});
+
 };
+
+//Show how many todos are present
+
+
 
 // Remove a todo
 const removeTodo = (): void => {
